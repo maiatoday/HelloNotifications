@@ -7,6 +7,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.google.firebase.iid.FirebaseInstanceId;
+
 public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = "MainActivity";
@@ -20,12 +22,12 @@ public class MainActivity extends AppCompatActivity {
         logTokenButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                // Get token
-//                String token = FirebaseInstanceId.getInstance().getToken();
-//
-//                // Log and toast
-//                String msg = getString(R.string.msg_token_fmt, token);
-                String msg = "Strength of the pack!";
+                // Get token
+                String token = FirebaseInstanceId.getInstance().getToken();
+
+                // Log and toast
+                String msg = getString(R.string.msg_token_fmt, token);
+//                String msg = "Strength of the pack!";
                 Log.d(TAG, msg);
                 Toast.makeText(MainActivity.this, msg, Toast.LENGTH_SHORT).show();
             }
