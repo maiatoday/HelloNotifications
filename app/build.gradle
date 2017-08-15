@@ -18,6 +18,24 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    flavorDimensions "quality", "taste"
+    productFlavors {
+        chocolate {
+            dimension "taste"
+            applicationIdSuffix '.chocolate'
+        }
+        vanilla {
+            dimension "taste"
+        }
+        expensive {
+            dimension "quality"
+        }
+        cheap {
+            dimension "quality"
+        }
+
+
+    }
 }
 
 repositories {
