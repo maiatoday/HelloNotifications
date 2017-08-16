@@ -6,11 +6,7 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorButtonNormal">@color/colorButton</item>
     </style>
-
-    <style name="Button" parent="Base.Widget.AppCompat.Button">
-        <item name="colorButtonNormal">?attr/colorAccent</item>
-    </style>
-
 
 </resources>
