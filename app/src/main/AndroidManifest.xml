@@ -17,19 +17,24 @@
             </intent-filter>
         </activity>
 
-        <service
-            android:name=".notification.MyInstanceIdService">
+        <service android:name=".notification.MyInstanceIdService">
             <intent-filter>
-                <action android:name="com.google.firebase.INSTANCE_ID_EVENT"/>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
+            </intent-filter>
+        </service>
+        <service android:name=".notification.MyMessagingService">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
 
-        <service
-            android:name=".notification.MyMessagingService">
-            <intent-filter>
-                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
-            </intent-filter>
-        </service>
+        <activity
+            android:label="@string/title_activity_home"
+            android:name=".HomeActivity_" />
+        <activity
+            android:name=".ListActivity_"
+            android:label="@string/title_activity_list"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>
