@@ -22,14 +22,11 @@ public class ListActivity extends AppCompatActivity {
     @ViewById(R.id.my_recycler_view)
     RecyclerView recyclerView;
 
+    @ViewById(R.id.toolbar)
+    Toolbar toolbar;
+
     private LinearLayoutManager layoutManager;
     private MyAdapter adapter;
-    private String[] data = {
-            "FLopsy",
-            "Mopsy",
-            "CottonTail",
-            "Peter"
-    };
 
     @Click
     void fab(View clickedView) {
@@ -45,8 +42,8 @@ public class ListActivity extends AppCompatActivity {
 
     @AfterViews
     protected void init() {
-//        Toolbar toolbar = findViewById(R.id.toolbar);
-//        setSupportActionBar(toolbar);
+
+        setSupportActionBar(toolbar);
         recyclerView.setHasFixedSize(true);
 
         // use a linear layout manager
@@ -54,6 +51,7 @@ public class ListActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(layoutManager);
 
         // specify an adapter (see also next example)
+        String[] data = getResources().getStringArray(R.array.snack_list);
         adapter = new MyAdapter(data);
         recyclerView.setAdapter(adapter);
 

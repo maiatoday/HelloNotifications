@@ -1,6 +1,7 @@
 package net.maiatoday.myapplication;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -45,12 +46,18 @@ public class MainActivity extends AppCompatActivity {
     @Click
     void loginButton() {
         prefs.loggedIn().put(true);
-        startActivity(new Intent(this, HomeActivity_.class));
-        finish();
+        gotoHomeScreen();
     }
 
     @AfterViews
     void init() {
+        if (getIntent().getExtras() != null) {
+            Log.d(TAG, "init: we started from a push notification");
+            for (String key : getIntent().getExtras().keySet()) {
+                String value = getIntent().getExtras().getString(key);
+                Log.d(TAG, "Key: " + key + " Value: " + value);
+            }
+        }
         textView.setText("Hello World " + BuildConfig.FLAVOR + " " + BuildConfig.BUILD_TYPE);
         if (BuildConfig.FLAVOR_quality == "cheap") {
             star1.setVisibility(View.GONE);
@@ -61,9 +68,19 @@ public class MainActivity extends AppCompatActivity {
         }
         boolean loggedIn = prefs.loggedIn().get();
         if (loggedIn) {
-            startActivity(new Intent(this, HomeActivity_.class));
-            finish();
+            gotoHomeScreen();
         }
+    }
+
+    private void gotoHomeScreen() {
+        Intent i = new Intent(this, HomeActivity_.class);
+        i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        Bundle launchIntentBundle = getIntent().getExtras();
+        if (launchIntentBundle != null && launchIntentBundle.containsKey("sale_id")) {
+            i.putExtra("sale_id", launchIntentBundle.getString("sale_id"));
+        }
+        startActivity(i);
+        finish();
     }
 
 }

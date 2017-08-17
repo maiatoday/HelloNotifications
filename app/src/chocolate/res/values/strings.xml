@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Chocolate</string>
+
+    <string-array name="snack_list">
+        <item>bar</item>
+        <item>pie</item>
+        <item>brownie</item>
+        <item>pudding</item>
+        <item>yoghurt</item>
+        <item>fudge</item>
+        <item>truffle</item>
+        <item>kiss</item>
+        <item>ice-cream</item>
+    </string-array>
+</resources>

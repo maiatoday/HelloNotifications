@@ -8,6 +8,7 @@ import android.widget.Toast;
 
 import com.google.firebase.iid.FirebaseInstanceId;
 
+import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.sharedpreferences.Pref;
@@ -36,6 +37,14 @@ public class HomeActivity extends AppCompatActivity {
     void logoutButton() {
         prefs.loggedIn().put(false);
         finish();
+    }
+
+    @AfterViews
+    void init() {
+        Bundle startBundle = getIntent().getExtras();
+        if (startBundle != null && startBundle.containsKey("sale_id")) {
+           showListButton();
+        }
     }
 
 }
