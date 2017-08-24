@@ -12,7 +12,7 @@ android {
     compileSdkVersion 26
     buildToolsVersion "26.0.0"
     defaultConfig {
-        applicationId "net.maiatoday.myapplication"
+        applicationId "net.maiatoday.hn"
         minSdkVersion 15
         targetSdkVersion 26
         versionCode 1
@@ -21,11 +21,14 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         javaCompileOptions {
             annotationProcessorOptions {
-                arguments = ['resourcePackageName': android.defaultConfig.applicationId]
+                arguments = ['resourcePackageName': "net.maiatoday.myapplication"]
             }
         }
     }
     buildTypes {
+        debug {
+            applicationIdSuffix '.debug'
+        }
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
@@ -40,12 +43,15 @@ android {
         }
         vanilla {
             dimension "taste"
+            applicationIdSuffix '.vanilla'
         }
         expensive {
             dimension "quality"
+            applicationIdSuffix '.expensive'
         }
         cheap {
             dimension "quality"
+            applicationIdSuffix '.cheap'
         }
 
 
